@@ -1,13 +1,14 @@
 # El siguiente diccionario fue agregado solo para pruebas
 cuenta = {
-    'nombre': "Antonio",
-    'apellido': "Perez",
-    'dpi': "1234567891234",
-    'pin': "1234",
-    'tipo': "Cuenta Clasica",
-    'moneda': "$",
-    'monto_saldo': "1000",
-    'monto_retirado': 300
+    'nombre': "",
+    'apellido': "",
+    'dpi': "",
+    'pin': "",
+    'tipo': "",
+    'moneda': "",
+    'monto_saldo': 0,
+    'monto_retirado': 0,
+    'monto_limite': 0
 }
 
 # Funcion encargada de solicitar datos de usuario:
@@ -27,7 +28,9 @@ def Cuenta_Apertura():
     
     moneda = input('Ingrese Tipo de moneda: \n1 - Quetzales\n2 - Dolares\n')
     Asignar_Moneda(moneda)
-    
+
+    Limite_Retiro();
+    print(str(cuenta['monto_limite']))
     print("La cuenta se ha aperturado con éxito, los datos son:\nNombre Completo: " + cuenta['nombre'] + " " + cuenta['apellido'] + "\nNumero de DPI: " + cuenta['dpi'] + "\nTipo de cuenta: " + cuenta['tipo'] + "\nMoneda: " + cuenta['moneda'] + "\nPIN: " + cuenta['pin'] + "\nSaldo de cuenta: " + cuenta['moneda'] + str(cuenta['monto_saldo']) + "\n\n\n")
 
 # Funcion encargada de validar el DPI del usuario
@@ -106,3 +109,13 @@ def Monto_Apertura_Dolares(monto):
         print('Por favor seleccione uno de los montos autorizados')
         monto = input("Ingrese el monto de apertura: \n1 - $15.00\n2 - $25.00\n3 - $75.00\n4 - $125.00\n")
         Monto_Apertura_Dolares(monto)
+
+def Limite_Retiro():
+    if cuenta['tipo'] == "Cuenta Clasica" and cuenta['moneda'] == "Q" or cuenta['tipo'] == "Cuenta Ahorro" and cuenta['moneda'] == "Q":
+        cuenta['limite'] = 2000
+    elif cuenta['tipo'] == "Cuenta Clasica" and cuenta['moneda'] == "$" or cuenta['tipo'] == "Cuenta Ahorro" and cuenta['moneda'] == "$":
+        cuenta['limite'] = 250
+    else:
+        cuenta['limite'] = 0
+
+Cuenta_Apertura()
