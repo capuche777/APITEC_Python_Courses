@@ -5,7 +5,8 @@ cuenta = {
     'pin': "",
     'tipo': "",
     'moneda': "",
-    'monto_saldo': ""
+    'monto_saldo': "",
+    'monto_retirado': ""
 }
 
 #Funcion encargada de solicitar datos de usuario:
