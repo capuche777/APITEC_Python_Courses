@@ -5,8 +5,8 @@ cuenta = {
     'pin': "",
     'tipo': "",
     'moneda': "",
-    'monto_saldo': "",
-    'monto_retirado': ""
+    'monto_saldo': 0,
+    'monto_retirado': 0
 }
 
 def Main_Menu():
@@ -27,7 +27,7 @@ def Main_Menu():
         Main_Menu()
 
 # Funcion que maneja en general la apertura de cuenta
-#Funcion encargada de solicitar datos de usuario:
+# Funcion encargada de solicitar datos de usuario:
 def Cuenta_Apertura():
     cuenta['nombre'] = input('Ingrese nombre de usuario: ')
     cuenta['apellido'] = input('Ingrese apellido de usuario: ')
@@ -45,7 +45,7 @@ def Cuenta_Apertura():
     moneda = input('Ingrese Tipo de moneda: \n1 - Quetzales\n2 - Dolares\n')
     Asignar_Moneda(moneda)
     
-    print("La cuenta se ha aperturado con éxito, los datos son:\nNombre Completo: " + cuenta['nombre'] + " " + cuenta['apellido'] + "\nNumero de DPI: " + cuenta['dpi'] + "\nTipo de cuenta: " + cuenta['tipo'] + "\nMoneda: " + cuenta['moneda'] + "\nPIN: " + cuenta['pin'] + "\nSaldo de cuenta: " + cuenta['moneda'] + cuenta['monto_saldo'] + "\n\n\n")
+    print("La cuenta se ha aperturado con éxito, los datos son:\nNombre Completo: " + cuenta['nombre'] + " " + cuenta['apellido'] + "\nNumero de DPI: " + cuenta['dpi'] + "\nTipo de cuenta: " + cuenta['tipo'] + "\nMoneda: " + cuenta['moneda'] + "\nPIN: " + cuenta['pin'] + "\nSaldo de cuenta: " + cuenta['moneda'] + str(cuenta['monto_saldo']) + "\n\n\n")
     Main_Menu()
 
 # Funcion encargada de validar el DPI del usuario
@@ -98,13 +98,13 @@ def Asignar_Moneda(moneda):
 # Funcion encargada de recibir el monto de apertura de la cuenta en Quetzales
 def Monto_Apertura_Quetzales(monto):
     if monto == "1" or monto == "100":
-        cuenta['monto_saldo'] = "100"
+        cuenta['monto_saldo'] = 100
     elif monto == "2" or monto == "200":
-        cuenta['monto_saldo'] = "200"
+        cuenta['monto_saldo'] = 200
     elif monto == "3" or monto == "500":
-        cuenta['monto_saldo'] = "500"
+        cuenta['monto_saldo'] = 500
     elif monto == "4" or monto == "1000":
-        cuenta['monto_saldo'] = "1000"
+        cuenta['monto_saldo'] = 1000
     else:
         print('Por favor seleccione uno de los montos autorizados')
         monto = input("Ingrese el monto de apertura: \n1 - 100.00\n2 - 200.00\n3 - 500.00 \n4 - 1000.00\n")
@@ -113,13 +113,13 @@ def Monto_Apertura_Quetzales(monto):
 # Funcion encargada de recibir el monto de apertura de la cuenta en Dolares
 def Monto_Apertura_Dolares(monto):
     if monto == "1" or monto == "15":
-        cuenta['monto_saldo'] = "15"
+        cuenta['monto_saldo'] = 15
     elif monto == "2" or monto == "25":
-        cuenta['monto_saldo'] = "25"
+        cuenta['monto_saldo'] = 25
     elif monto == "3" or monto == "75":
-        cuenta['monto_saldo'] = "75"
+        cuenta['monto_saldo'] = 75
     elif monto == "4" or monto == "125":
-        cuenta['monto_saldo'] = "125"
+        cuenta['monto_saldo'] = 125
     else:
         print('Por favor seleccione uno de los montos autorizados')
         monto = input("Ingrese el monto de apertura: \n1 - $15.00\n2 - $25.00\n3 - $75.00\n4 - $125.00\n")
@@ -131,8 +131,7 @@ def Cuenta_Deposito():
     if monto <= 0:
         print('El monto debe ser a partir de ' + cuenta['moneda'] + '1.00')
     else:
-        nuevo = int(cuenta['monto_saldo']) + monto
-        cuenta["monto_saldo"] = str(nuevo)
+        cuenta["monto_saldo"] = cuenta['monto_saldo'] + monto
         print('El deposito se ha realizado con éxito,\nSu nuevo saldo es ' + str(cuenta['moneda']) + str(cuenta['monto_saldo']))
         Main_Menu()
 
