@@ -1,11 +1,12 @@
 cuenta = {
-    'nombre': "",
-    'apellido': "",
-    'dpi': "",
-    'pin': "",
-    'tipo': "",
-    'moneda': "",
-    'monto_saldo': ""
+    'nombre': "Juan",
+    'apellido': "Yela",
+    'dpi': "1234567891234",
+    'pin': "1234",
+    'tipo': "Cuenta Clasica",
+    'moneda': "Q",
+    'monto_saldo': "1000",
+    'monto_retirado': "0"
 }
 
 #Funcion encargada de solicitar datos de usuario:
@@ -103,5 +104,3 @@ def Monto_Apertura_Dolares(monto):
         print('Por favor seleccione uno de los montos autorizados')
         monto = input("Ingrese el monto de apertura: \n1 - $15.00\n2 - $25.00\n3 - $75.00\n4 - $125.00\n")
         Monto_Apertura_Dolares(monto)
-
-Cuenta_Apertura()
